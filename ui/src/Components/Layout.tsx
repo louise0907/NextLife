@@ -8,9 +8,9 @@ const Layout = () => {
   const [open, setOpen] = useState(true)
   const Menus = [
     { title: 'Dashboard', src: 'Chart_fill', path: '/' },
-    { title: 'Networth', src: 'Chat', path: 'networth' },
     { title: 'Investment', src: 'User', path: 'investment' },
     { title: 'Business', src: 'Chart', path: 'business' },
+    { title: 'Networth', src: 'Chat', path: 'networth' },
     { title: 'Goal', src: 'Calendar', gap: true, path: 'goal' },
     { title: 'Skill', src: 'Search', path: 'skill' },
     // { title: 'Files ', src: 'Folder', gap: true, path: '#' },
