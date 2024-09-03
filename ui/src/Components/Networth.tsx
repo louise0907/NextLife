@@ -122,13 +122,15 @@ const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Validation logic
     const newErrors: Record<string, string> = {};
+    // Validation logic
+    
     if (!formData.name) newErrors.name = 'Name is required';
     if (!formData.value) newErrors.value = 'Value is required';
     if (!formData.base_value) newErrors.base_value = 'Base value is required';
 
+    if(formData.value<=0)newErrors.value='value must be greater than 0';
+    if (formData.base_value <= 0) newErrors.base_value = 'Base value must be greater than 0';
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -183,6 +185,19 @@ const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
 
   const handleUpdate = async (e) => {
     e.preventDefault()
+    const newErrors: Record<string, string> = {};
+    // Validation logic
+    
+    if (!formData.name) newErrors.name = 'Name is required';
+    if (!formData.value) newErrors.value = 'Value is required';
+    if (!formData.base_value) newErrors.base_value = 'Base value is required';
+
+    if(formData.value<=0)newErrors.value='value must be greater than 0';
+    if (formData.base_value <= 0) newErrors.base_value = 'Base value must be greater than 0';
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
     try {
       const body = {
         id: formData.id,
@@ -340,7 +355,7 @@ const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
                     onChange={handleChange}
                     className='border border-gray-300 rounded-md p-2 mb-4 w-full'
                   />
-
+                  {errors.name && <p className="text-red-500">{errors.name}</p>}
                   <label htmlFor='value'>Value:</label>
                   <input
                     type='number'
@@ -350,7 +365,7 @@ const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
                     onChange={handleChange}
                     className='border border-gray-300 rounded-md p-2 mb-4 w-full'
                   />
-
+                  {errors.value && <p className="text-red-500">{errors.value}</p>}
                   <label htmlFor='target_value'>Target value:</label>
                   <input
                     type='number'
@@ -360,7 +375,7 @@ const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
                     onChange={handleChange}
                     className='border border-gray-300 rounded-md p-2 mb-4 w-full'
                   />
-
+                  {errors.base_value && <p className="text-red-500">{errors.base_value}</p>}
                   <label htmlFor='type'>Type</label>
                   <select
                     id='type'

@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ui",
+    "\\ui\\src",
+    "\\ui\\src\\Components"
   ],
+  "SelectedNode": "\\ui\\electron",
   "PreviewInSolutionExplorer": false
 }
